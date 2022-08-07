@@ -1,0 +1,9 @@
+version: '3'
+services:
+  nacos-registry:
+    image: nacos/nacos-server:v2.1.0
+    container_name: nacos-registry
+    environment:
+      - "MODE=standalone"
+    ports:
+      - 8848:8848
