@@ -13,7 +13,6 @@ services:
   elasticsearch:
     image: elasticsearch:8.3.3
     container_name: elasticsearch
-    user: root
     environment:
       - "cluster.name=elasticsearch" #设置集群名称为elasticsearch
       - "discovery.type=single-node" #以单一节点模式启动
@@ -30,7 +29,8 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - D:/Docker/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf #挂载logstash的配置文件
+      - D:/Docker/logstash/logstash/:/usr/share/logstash/pipeline/ #挂载logstash的配置文件
+      - D:/Docker/logstash/config/:/usr/share/logstash/config/ #挂载logstash的配置文件
     depends_on:
       - elasticsearch #kibana在elasticsearch启动之后再启动
     links:
